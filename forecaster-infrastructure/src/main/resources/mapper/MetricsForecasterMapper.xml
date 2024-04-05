@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wjh.projects.infrastructure.mapper.MetricsForecasterMapper">
+
+    <insert id="saveMetricsEstimateDO">
+        INSERT INTO metrics_estimate (`record_key`, `duration`, `deviation`, `create_time`)
+        VALUES (#{recordKey}, #{duration}, #{deviation}, #{createTime})
+    </insert>
+
+    <insert id="saveMetricsTrackDO">
+        INSERT INTO metrics_track (`record_key`, `latitude`, `longitude`, `create_time`)
+        VALUES (#{recordKey}, #{latitude}, #{longitude}, #{createTime})
+    </insert>
+
+</mapper>

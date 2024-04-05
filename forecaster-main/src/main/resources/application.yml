@@ -1,0 +1,6 @@
+server:
+  port: 5555
+
+spring:
+  profiles:
+    include: domain,infrastructure,common
