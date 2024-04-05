@@ -13,7 +13,7 @@
 |  7  | 测试层 | forecaster-test           | 单元测设与集成测试                         |
 
 ## 数据监控
-* [监控面板](http://47.120.70.3:3000/d/GWK9al1Iz/monitor?orgId=1&refresh=10s)
+* [监控面板](http://47.120.70.3:3000/d/GWK9al1Iz/monitor?orgId=1&refresh=10s)（账号：user，密码：1234）
 
 ## 环境配置
 | 名称            | 版本     | 说明       |
