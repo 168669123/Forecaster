@@ -14,7 +14,6 @@
         <module>forecaster-domain</module>
         <module>forecaster-infrastructure</module>
         <module>forecaster-common</module>
-        <module>forecaster-facade</module>
         <module>forecaster-application</module>
         <module>forecaster-test</module>
     </modules>

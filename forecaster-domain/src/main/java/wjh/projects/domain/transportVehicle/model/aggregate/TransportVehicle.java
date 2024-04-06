@@ -56,6 +56,9 @@ public class TransportVehicle implements AggregateRoot<TransportVehicleIdVO> {
      * 获取运输车辆的所有运输任务 id
      */
     public List<String> getTransportTaskIds() {
+        if (transportTasks == null)
+            return null;
+
         List<String> transportTaskIds = new ArrayList<>();
         for (TransportTask transportTask : transportTasks)
             transportTaskIds.add(transportTask.getId());
