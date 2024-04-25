@@ -18,8 +18,8 @@ class TransportVehicleRepositoryTest {
     @Test
     void testAssignTransportTasks() {
         TransportVehicleIdVO id = new TransportVehicleIdVO("浙A9Z027");
-        TransportVehicle transportVehicle = new TransportVehicle(id, null);
+        TransportVehicle transportVehicle = new TransportVehicle(id, null, null);
         transportVehicleRepository.assignTransportTasks(transportVehicle);
-        Assertions.assertNotNull(transportVehicle.getTransportTaskIds());
+        Assertions.assertNotNull(transportVehicle.getTransportTasks());
     }
 }

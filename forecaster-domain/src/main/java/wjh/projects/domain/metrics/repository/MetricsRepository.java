@@ -4,10 +4,12 @@ import wjh.projects.domain.base.Repository;
 import wjh.projects.domain.metrics.model.aggregate.Metrics;
 import wjh.projects.domain.metrics.model.vo.MetricsIdVO;
 
+import java.util.List;
+
 public interface MetricsRepository extends Repository<Metrics, MetricsIdVO> {
 
     /**
-     * 存储数据记录
+     * 根据唯一标识查询数据记录集合
      */
-    void save(Metrics metrics);
+    List<Metrics> listMetrics(MetricsIdVO metricsIdVO);
 }

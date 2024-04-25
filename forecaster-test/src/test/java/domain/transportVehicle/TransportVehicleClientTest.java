@@ -10,17 +10,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import wjh.projects.ForecasterApplication;
-import wjh.projects.domain.transportVehicle.middleware.TransportVehicleClient;
 
-import javax.annotation.Resource;
 import java.time.Duration;
 import java.util.Collections;
 import java.util.Properties;
 
 @SpringBootTest(classes = ForecasterApplication.class)
 public class TransportVehicleClientTest {
-    @Resource
-    private TransportVehicleClient transportVehicleClient;
     private KafkaConsumer<String, Object> consumer;
 
     @BeforeEach
@@ -42,7 +38,6 @@ public class TransportVehicleClientTest {
     @Test
     public void testSendTransportTaskArriveInfo() {
         String testInfo = "testInfo";
-        transportVehicleClient.sendTransportTaskArriveInfo(testInfo);
         ConsumerRecords<String, Object> records = consumer.poll(Duration.ofSeconds(5));
 
         Assertions.assertTrue(records.iterator().hasNext(), "没有在 Kafka 中发现新消息");

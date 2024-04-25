@@ -3,6 +3,7 @@ package wjh.projects.domain.estimateArrive.model.vo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Date;
  */
 @Getter
 @AllArgsConstructor
-public class EstimateArriveInfoVO {
+public class EstimateArriveInfoVO implements Serializable {
     /**
      * 运输车辆 id
      */
@@ -55,6 +56,10 @@ public class EstimateArriveInfoVO {
      * 开始计算预计到时间的时间
      */
     private Date calculateTime;
+    /**
+     * 目标地址的计划送达时间
+     */
+    private Date planTime;
 
     private EstimateArriveInfoVO() {
     }

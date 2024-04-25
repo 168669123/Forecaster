@@ -10,12 +10,13 @@
     <description>Forecaster</description>
 
     <modules>
-        <module>forecaster-main</module>
         <module>forecaster-domain</module>
         <module>forecaster-infrastructure</module>
         <module>forecaster-common</module>
         <module>forecaster-application</module>
         <module>forecaster-test</module>
+        <module>forecaster-interfaces</module>
+        <module>forecaster-facade</module>
     </modules>
 
     <properties>

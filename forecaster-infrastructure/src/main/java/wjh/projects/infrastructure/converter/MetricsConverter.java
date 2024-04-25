@@ -1,32 +1,20 @@
 package wjh.projects.infrastructure.converter;
 
 import wjh.projects.domain.metrics.model.aggregate.Metrics;
-import wjh.projects.infrastructure.dao.MetricsEstimateDO;
-import wjh.projects.infrastructure.dao.MetricsTrackDO;
-
-import java.util.Date;
+import wjh.projects.infrastructure.dao.MetricsDO;
 
 public class MetricsConverter {
 
-    public static MetricsEstimateDO toMetricsEstimateDO(Metrics metrics) {
-        MetricsEstimateDO metricsEstimateDO = new MetricsEstimateDO();
+    public static MetricsDO toMetricsDO(Metrics metrics) {
+        MetricsDO metricsDO = new MetricsDO();
 
-        metricsEstimateDO.setRecordKey(metrics.getRecordKey());
-        metricsEstimateDO.setDuration(metrics.getDuration());
-        metricsEstimateDO.setDeviation(metrics.getDeviation());
-        metricsEstimateDO.setCreateTime(new Date());
+        metricsDO.setApplication(metrics.getMetricsIdVO().getApplication());
+        metricsDO.setGroup(metrics.getMetricsIdVO().getGroup());
+        metricsDO.setDataKey(metrics.getMetricsIdVO().getDataKey());
+        metricsDO.setDataValue1(metrics.getDataVO().getDataValue1());
+        metricsDO.setDataValue2(metrics.getDataVO().getDataValue2());
+        metricsDO.setCreateTime(metrics.getDataVO().getCreateTime());
 
-        return metricsEstimateDO;
-    }
-
-    public static MetricsTrackDO toMetricsTrackDO(Metrics metrics) {
-        MetricsTrackDO metricsTrackDO = new MetricsTrackDO();
-
-        metricsTrackDO.setRecordKey(metrics.getRecordKey());
-        metricsTrackDO.setLatitude(metrics.getLatitude());
-        metricsTrackDO.setLongitude(metrics.getLongitude());
-        metricsTrackDO.setCreateTime(new Date());
-
-        return metricsTrackDO;
+        return metricsDO;
     }
 }

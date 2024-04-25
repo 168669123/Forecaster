@@ -1,6 +1,8 @@
 package wjh.projects.domain.transportVehicle.model.entity;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import wjh.projects.common.util.GeoUtil;
 import wjh.projects.domain.base.Entity;
 import wjh.projects.domain.transportVehicle.model.vo.LocationVO;
 import wjh.projects.domain.transportVehicle.model.vo.SiteIdVO;
@@ -10,13 +12,13 @@ import java.util.Date;
 /**
  * 运输站点
  */
-@Data
+@Getter
+@AllArgsConstructor
 public class Site implements Entity<SiteIdVO> {
-    private SiteIdVO siteIdVO;
     /**
-     * 下一个站点
+     * 唯一标识
      */
-    private Site next;
+    private SiteIdVO siteIdVO;
     /**
      * 当前站点的计划送达时间
      */
@@ -24,22 +26,44 @@ public class Site implements Entity<SiteIdVO> {
     /**
      * 当前站点是否到车
      */
-    private boolean arrived;
+    private Boolean arrived;
     /**
-     * 站点位置信息
+     * 下一个站点
      */
-    private LocationVO location;
+    private Site next;
 
     private Site() {
     }
 
-    public int getId() {
-        return siteIdVO.getId();
+    public boolean equalsId(SiteIdVO id) {
+        if (id.getSiteId() != siteIdVO.getSiteId())
+            return false;
+
+        return id.getLocationVO().getAddress().equals(siteIdVO.getLocationVO().getAddress());
     }
 
-    public Site(SiteIdVO siteIdVO, Date planTime, LocationVO location) {
-        this.siteIdVO = siteIdVO;
-        this.planTime = planTime;
-        this.location = location;
+    /**
+     * 判断当前运输站点是否是运输任务终点
+     */
+    public boolean isTerminus() {
+        return next == null;
+    }
+
+    /**
+     * 根据当前位置信息判断站点是否到车
+     */
+    public boolean isArrived(LocationVO currLocation) {
+        LocationVO siteLocation = siteIdVO.getLocationVO();
+        double distance = GeoUtil.calculateLinearDistance(
+                currLocation.getLongitude(),
+                siteLocation.getLongitude(),
+                currLocation.getLatitude(),
+                siteLocation.getLatitude());
+
+        // 如果当前位置和站点间的距离 <= 100 m，则认为该站点已经到车
+        if (!getArrived() && distance <= 100)
+            arrived = true;
+
+        return arrived;
     }
 }

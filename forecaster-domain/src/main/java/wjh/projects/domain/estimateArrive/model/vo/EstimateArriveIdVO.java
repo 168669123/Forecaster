@@ -7,7 +7,8 @@ import wjh.projects.domain.base.Identifier;
 @Getter
 @AllArgsConstructor
 public class EstimateArriveIdVO implements Identifier {
-    private String id;
+    private String transportVehicleId;
+    private String transportTaskId;
 
     private EstimateArriveIdVO() {
     }

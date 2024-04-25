@@ -7,7 +7,14 @@ import wjh.projects.domain.base.Identifier;
 @Getter
 @AllArgsConstructor
 public class SiteIdVO implements Identifier {
-    private int id;
+    /**
+     * 唯一标识
+     */
+    private Integer siteId;
+    /**
+     * 站点位置信息
+     */
+    private LocationVO locationVO;
 
     private SiteIdVO() {
     }

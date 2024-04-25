@@ -7,7 +7,10 @@ import wjh.projects.domain.base.Identifier;
 @Getter
 @AllArgsConstructor
 public class MetricsIdVO implements Identifier {
-    private int id;
+    private Integer id;
+    private String application;
+    private String group;
+    private String dataKey;
 
     private MetricsIdVO() {
     }

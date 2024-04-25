@@ -2,8 +2,6 @@ package wjh.projects.common.util;
 
 import com.alibaba.fastjson2.JSON;
 import javafx.util.Pair;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.text.ParseException;
 import java.util.*;
@@ -208,5 +206,16 @@ public class StringUtil {
             return string.substring(remove.length());
 
         return string;
+    }
+
+    /**
+     * 拼接字符串
+     */
+    public static String append(String... strings) {
+        StringBuilder sb = new StringBuilder();
+        for (String string : strings)
+            sb.append(string);
+
+        return sb.toString();
     }
 }

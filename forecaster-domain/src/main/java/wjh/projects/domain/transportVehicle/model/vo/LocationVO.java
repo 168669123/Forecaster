@@ -2,15 +2,15 @@ package wjh.projects.domain.transportVehicle.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import wjh.projects.common.util.SpringContextUtil;
-import wjh.projects.domain.transportVehicle.rpc.LocationFacadeClient;
+
+import java.io.Serializable;
 
 /**
  * 位置信息
  */
 @Getter
 @AllArgsConstructor
-public class LocationVO {
+public class LocationVO implements Serializable {
     /**
      * 地址
      */
@@ -25,12 +25,5 @@ public class LocationVO {
     private Double longitude;
 
     private LocationVO() {
-    }
-
-    public LocationVO(String address) {
-        LocationVO geocode = SpringContextUtil.getBean(LocationFacadeClient.class).geocode(address);
-        this.address = geocode.address;
-        this.latitude = geocode.latitude;
-        this.longitude = geocode.longitude;
     }
 }

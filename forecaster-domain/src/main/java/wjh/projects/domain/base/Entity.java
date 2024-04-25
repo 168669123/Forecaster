@@ -1,4 +1,6 @@
 package wjh.projects.domain.base;
 
-public interface Entity<T extends Identifier> {
+import java.io.Serializable;
+
+public interface Entity<T extends Identifier> extends Serializable {
 }

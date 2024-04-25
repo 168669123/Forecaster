@@ -27,7 +27,7 @@
         <!-- forecaster-main -->
         <dependency>
             <groupId>wjh.projects</groupId>
-            <artifactId>forecaster-main</artifactId>
+            <artifactId>forecaster-interfaces</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>

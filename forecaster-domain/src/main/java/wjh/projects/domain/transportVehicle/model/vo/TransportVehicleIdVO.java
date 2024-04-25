@@ -5,12 +5,12 @@ import wjh.projects.domain.base.Identifier;
 
 @Getter
 public class TransportVehicleIdVO implements Identifier {
-    private String id;
+    private String transportVehicleId;
 
     private TransportVehicleIdVO() {
     }
 
-    public TransportVehicleIdVO(String id) {
-        this.id = id;
+    public TransportVehicleIdVO(String transportVehicleId) {
+        this.transportVehicleId = transportVehicleId;
     }
 }

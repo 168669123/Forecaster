@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wjh.projects.infrastructure.mapper.MetricsMapper">
+
+    <insert id="insert">
+        insert into metrics(`application`, `group`, `data_key`, `data_value1`, `data_value2`, `create_time`)
+        values (#{application}, #{group}, #{dataKey}, #{dataValue1}, #{dataValue2}, #{createTime})
+    </insert>
+
+    <select id="listUniqueDataKeys" resultType="java.lang.String">
+        select distinct `data_key`
+        from metrics
+        where `application` = #{application}
+          and `group` = #{group}
+    </select>
+
+    <select id="listMetricsDO" resultType="wjh.projects.infrastructure.dao.MetricsDO">
+        select `id`,
+               `application`,
+               `group`,
+               `data_key`,
+               `data_value1`,
+               `data_value2`,
+               `create_time`
+        from metrics
+        where `application` = #{application}
+          and `group` = #{group}
+          and `data_key` like concat(#{dataKey}, '%')
+    </select>
+</mapper>
